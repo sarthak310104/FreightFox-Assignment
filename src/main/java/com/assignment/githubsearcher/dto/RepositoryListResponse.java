@@ -1,14 +1,5 @@
 package com.assignment.githubsearcher.dto;
 
-import java.time.Instant;
+import java.util.List;
 
-public record RepositoryListResponse(
-        Long id,
-        String name,
-        String description,
-        String owner,
-        String language,
-        int stars,
-        int forks,
-        Instant lastUpdated) {
-}
+public record RepositoryListResponse(List<RepositoryResponse> repositories) { }
