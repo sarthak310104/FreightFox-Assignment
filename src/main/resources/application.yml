@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: github-searcher
+  datasource:
+    url: jdbc:postgresql://localhost:5432/github_searcher
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+
+github:
+  api:
+    base-url: https://api.github.com
+    token: ${GITHUB_TOKEN:}
+    per-page: 30
+    connect-timeout: 5s
+    read-timeout: 10s
