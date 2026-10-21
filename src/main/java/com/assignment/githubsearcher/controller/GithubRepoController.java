@@ -25,7 +25,7 @@ public class GithubRepoController {
 
     @PostMapping("/search")
     public SearchResponse search(@Valid @RequestBody SearchRequest request) {
-        throw new UnsupportedOperationException("Not implemented yet");
+        return service.searchAndSave(request);
     }
 
     @GetMapping("/repositories")
@@ -35,6 +35,6 @@ public class GithubRepoController {
             @RequestParam(required = false)
             @Min(value = 0, message = "minStars must be 0 or greater") Integer minStars,
             @RequestParam(defaultValue = "stars") SortOption sort) {
-        throw new UnsupportedOperationException("Not implemented yet");
+        return service.findStored(language, minStars, sort);
     }
 }
