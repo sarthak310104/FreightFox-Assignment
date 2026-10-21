@@ -10,7 +10,37 @@ import java.time.Instant;
 @Component
 public class RepoMapper {
 
-    public RepositoryEntity toEntity(GithubRepoItem item, Instant fetchedAt) { return null; }
+    private static final String UNKNOWN_OWNER = "unknown";
 
-    public RepositoryResponse toResponse(RepositoryEntity entity) { return null; }
+    public RepositoryEntity toEntity(GithubRepoItem item, Instant fetchedAt) {
+        String owner = item.owner() != null ? item.owner().login() : UNKNOWN_OWNER;
+
+        return new RepositoryEntity(
+                item.id(),
+                item.name(),
+                item.fullName(),
+                item.description(),
+                owner,
+                item.language(),
+                item.stargazersCount(),
+                item.forksCount(),
+                item.watchersCount(),
+                item.openIssuesCount(),
+                item.htmlUrl(),
+                item.createdAt(),
+                item.updatedAt(),
+                fetchedAt);
+    }
+
+    public RepositoryResponse toResponse(RepositoryEntity entity) {
+        return new RepositoryResponse(
+                entity.getId(),
+                entity.getName(),
+                entity.getDescription(),
+                entity.getOwner(),
+                entity.getLanguage(),
+                entity.getStars(),
+                entity.getForks(),
+                entity.getLastUpdated());
+    }
 }
