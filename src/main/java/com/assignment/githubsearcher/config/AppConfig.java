@@ -13,7 +13,7 @@ import java.time.Clock;
 public class AppConfig {
 
     @Bean
-    public RestClient githubRestClient(GithubProperties properties) {
+    public RestClient githubHttpClient(GithubProperties properties) {
         SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
         requestFactory.setConnectTimeout(properties.connectTimeout());
         requestFactory.setReadTimeout(properties.readTimeout());
